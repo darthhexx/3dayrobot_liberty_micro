@@ -30,8 +30,10 @@ class SuperRoo_TargetFinder:
         self.angle = 0.0
         return
 
-    def __del__():
-        cv2.destroyAllWindows()
+    def __del__(self):
+        self.cap.release()
+        if self.display_windows:
+            cv2.destroyAllWindows()
 
     def grab_image(self):
         _, frame = self.cap.read()
@@ -116,12 +118,14 @@ class SuperRoo_TargetFinder:
         x = image_height - largest_target[1]
 
         self.angle = np.arcsin(x/z)
+        return
 
-        def main_loop():
-            while True:
-                frame = self.grab_imgae()
-                self.angle = self.find_target(frame)
+    def main_loop(self):
+        while True:
+            frame = self.grab_image()
+            self.angle = self.find_target(frame)
+        return
 
-        def poll():
-            return self.angle
+    def poll(self):
+        return self.angle
 
