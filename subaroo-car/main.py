@@ -10,6 +10,7 @@ import libraries.bearings as bearings
 import libraries.pid as lpid
 import libraries.imuv1 as imu
 import libraries.gpsv1 as gps
+import libraries.targetfinder as targetfinder
 
 CAR_SERIAL_PORT  = '/dev/ttyUSB1'
 MAX_TIME_DIFF    = 0.2 # Maximum time diff to accept gps
@@ -107,7 +108,7 @@ if __name__ == '__main__':
     print("GPS started")
 
     print("Starting ObjRecognition")
-    objRec_ = JoystickController()
+    objRec_ = targetfinder.SuperRoo_TargetFinder()
     objRec_t = Thread(target=objRec.main_loop, args=())
     objRec_t.daemon = True
     objRec_t.start()
