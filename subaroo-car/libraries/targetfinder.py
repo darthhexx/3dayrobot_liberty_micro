@@ -108,7 +108,7 @@ class SuperRoo_TargetFinder:
         image_height, image_width, _ = [frame.shape[0], frame.shape[1], frame.shape[2]]
         bottom_point = np.array([round(image_width/2), round(image_height)])
 
-        cv2.line(image, (largest_target[0], largest_target[1]), (bottom_point[0], bottom_point[1]), (255,255,255), 17, -1)
+        cv2.line(image, (int(largest_target[0]), int(largest_target[1])), (int(bottom_point[0]), int(bottom_point[1])), (255,255,255), 17, -1)
         if self.display_windows:
             cv2.imshow('im_with_keypoints', cv2.resize(image,dsize=(0,0),fx=0.5,fy=0.5))
             cv2.imshow('mask', cv2.resize(mask, dsize=(0, 0), fx=0.5, fy=0.5))
