@@ -24,7 +24,7 @@ class SuperRoo_TargetFinder:
         # white2 = cap.get(cv2.CAP_PROP_XI_AUTO_WB)
         # red = cap.get(cv2.CAP_PROP_WHITE_BALANCE_RED_V)
 
-        self.record_images = True
+        self.record_images = False
         self.read_camera = False
         self.display_windows = display_windows
         self.angle = 0.0
